@@ -1,0 +1,178 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{model.name}}</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-grid>
+    <ion-row>
+      <ion-col size="8" size-md>
+        <div class="img-avatar">
+          <img class="image" src="/assets/images/{{model.name}}.png"/>
+        </div>
+      </ion-col>
+       <ion-col size="4" size-md>
+        <div class="img-avatar">
+        	<ion-row wrap-reverse >
+          		<img class="image-right" src="/assets/images/{{model.tier}}.png"/>
+          	</ion-row>
+        	<ion-row wrap-reverse >
+          		<img class="image-right" src="/assets/images/{{model.element}}.png"/>
+          	</ion-row>
+          	<ion-row wrap-reverse >
+          		<img class="image-right" src="/assets/images/{{model.type}}.png"/>
+          	</ion-row>
+          	<ion-row wrap-reverse  align-items-center>
+          		<img class="image-right-class" src="/assets/images/{{model.class}}.png"/>
+          	</ion-row>
+        </div>
+      </ion-col>
+	</ion-row>
+		
+	<br>	
+	<div id="div-skills">
+		<ion-row>
+	      	<ion-col size="10" size-sm>
+		      	<div style="padding-bottom: 0px;padding-left: 20px">
+			      	<div>
+				      	<img style="width: 150px height: 30px" src="assets/images/LeaderSkill.png" />
+				    </div>
+			        <p style="margin-top: 5px" [innerHTML]="model.leaderSkill"></p>
+		        </div>
+			</ion-col>
+		</ion-row>
+	    <ion-row>
+	      <ion-col  col-xl-4 col-lg-5 col-12 >
+	      	<div style="padding-bottom: 0px;padding-left: 20px">
+		      	<div>
+			        <img class="image" src="assets/images/Skill1.png" />
+			    </div>
+		        <p style="margin-top: 5px" [innerHTML]="model.skill1"></p>
+			</div>
+	      </ion-col>
+	    </ion-row>
+	    <ion-row>
+	      <ion-col  col-xl-4 col-lg-5 col-12 >
+	      	<div style="padding-bottom: 0px;padding-left: 20px">
+		      	<div>
+			        <img class="image" src="assets/images/Skill2.png" />
+			    </div>
+		        <p style="margin-top: 5px" [innerHTML]="model.skill2"></p>
+			</div>
+	      </ion-col>
+    </ion-row>
+	</div>
+  </ion-grid>
+	
+  	<div id= "best-buddy" style="padding: 10px">
+	  <div id="best-buddy-chain-effect" *ngIf="(model.chainBuddies.length>0)">
+	  	<div>
+	  		<img  src="assets/images/BuddyChainEffect.png" />
+	  	</div>
+	  	<div style="margin-left: -20px">
+	  		<ion-list>
+	    		<ion-item *ngFor="let chain of model.chainBuddies" >
+			  		<ion-grid>
+			  			<ion-row align-items-center>
+			  			  <ion-col size="4" size-md>
+				      		<b>{{chain.name}}</b>
+				    	  </ion-col>	
+			  			</ion-row>
+					    <ion-row>
+					      <ion-col size="4" size-md>
+					      	<img class="image" src="/assets/images/{{chain.name}}.png" (click)="goDetail(chain.name)"/>
+					      </ion-col>
+					      <ion-col size="2" size-md>
+					      	<div>
+					      		<img class="image-right-small" src="/assets/images/{{chain.tier}}.png"/>
+					      	</div>
+					      	<div>
+					      		<img class="image-right-small" src="/assets/images/{{chain.element}}.png"/>
+					      	</div>
+					      	<div>
+					      		<img class="image-right-small" src="/assets/images/{{chain.type}}.png"/>
+					      	</div>
+					      	<div>
+					      		<img class="image-right-small-class" src="/assets/images/{{chain.class}}.png"/>
+					      	</div>
+					      </ion-col>
+					      <ion-col size="6" size-md>
+					      	<b><i>Effect: {{chain.effect}}</i></b>
+					      	<p style="margin-top: 5px" [innerHTML]="chain.chainSkill"></p>
+					      </ion-col>
+					  </ion-row>
+					</ion-grid>
+				</ion-item>
+			</ion-list>
+		</div>
+	  </div>
+
+	  <!-- <div id="best-buddy-overhit-skill" *ngIf="(model.chainBuddies.length>0)">
+	  	<div>
+	  		<img  src="assets/images/BuddyOverhitSkill.png" />
+	  	</div>
+	  	<div style="margin-left: -20px">
+	  		<ion-list>
+	    		<ion-item *ngFor="let chain of model.chainBuddies" >
+			  		<ion-grid>
+			  			<ion-row align-items-center>
+			  			  <ion-col size="4" size-md>
+				      		<b>{{chain.name}}</b>
+				    	  </ion-col>	
+			  			</ion-row>
+					    <ion-row>
+					      <ion-col size="4" size-md>
+					      	<img class="image" src="/assets/images/{{chain.name}}.png" (click)="goDetail(chain.name)"/>
+					      </ion-col>
+					      <ion-col size="2" size-md>
+					      	<div>
+					      		<img class="image-right-small" src="/assets/images/{{chain.tier}}.png"/>
+					      	</div>
+					      	<div>
+					      		<img class="image-right-small" src="/assets/images/{{chain.element}}.png"/>
+					      	</div>
+					      	<div>
+					      		<img class="image-right-small" src="/assets/images/{{chain.type}}.png"/>
+					      	</div>
+					      	<div>
+					      		<img class="image-right-small-class" src="/assets/images/{{chain.class}}.png"/>
+					      	</div>
+					      </ion-col>
+					      <ion-col size="6" size-md>
+					      	<b><i>Effect: {{chain.effect}}</i></b>
+					      	<p style="margin-top: 5px" [innerHTML]="chain.chainSkill"></p>
+					      </ion-col>
+					  </ion-row>
+					</ion-grid>
+				</ion-item>
+			</ion-list>
+		</div>
+	  </div> -->
+
+
+	  <!-- <div id="best-buddy-link-skill">
+	  	<div>
+	  		<img  src="assets/images/BuddyChainEffect.png" />
+	  	</div>
+	  	<div>
+	  		<ion-grid>
+			    <ion-row>
+			      <ion-col size="4" size-md>
+			      	<img class="image" src="/assets/images/{{model.name}}.png"/>
+			      </ion-col>
+			      <ion-col size="8" size-md>
+			      	<p style="margin-top: 5px" [innerHTML]="model.skill1"></p>
+			      </ion-col>
+			  </ion-row>
+			</ion-grid>
+		</div>
+	  </div> -->
+
+	</div>
+
+</ion-content>

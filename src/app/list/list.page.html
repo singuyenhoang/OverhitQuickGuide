@@ -1,0 +1,187 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Overhit Heroes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar mode="ios"  value="" [(ngModel)]="searchTerm" (ionChange)="search()"></ion-searchbar>
+
+  <div id="advance-search"> 
+    <ion-grid>
+      <div id="hero-tier">
+        <ion-row>
+          <ion-col size=4>
+            <ion-row align-items-center>
+              <ion-col align-self-end size=6>
+                <img float-right src="assets/images/UR.png"/>
+              </ion-col>
+              <ion-col size=6>
+                <ion-checkbox (ionChange)="search()" [(ngModel)]="searchUR" mode="md"></ion-checkbox>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col size=4>
+            <ion-row align-items-center>
+              <ion-col size=6>
+                <img float-right src="assets/images/SSR.png"/>
+              </ion-col>
+              <ion-col size=6>
+                <ion-checkbox (ionChange)="search()" [(ngModel)]="searchSSR" mode="md"></ion-checkbox>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col size=4>
+            <ion-row align-items-center>
+              <ion-col size=6>
+                <img float-right src="assets/images/SR.png"/>
+              </ion-col>
+              <ion-col size=6>
+                <ion-checkbox (ionChange)="search()" [(ngModel)]="searchSR" mode="md"></ion-checkbox>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+       </ion-row>
+      </div>
+
+      <div id="hero-type">
+        <ion-row>
+          <ion-col >
+            <ion-row align-items-center>
+              <ion-col align-self-end size=6>
+                <img float-right src="assets/images/Fire.png"/>
+              </ion-col>
+              <ion-col size=6>
+                <ion-checkbox (ionChange)="search()" [(ngModel)]="searchFire" mode="md"></ion-checkbox>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col >
+            <ion-row align-items-center>
+              <ion-col size=6>
+                <img float-right src="assets/images/Water.png"/>
+              </ion-col>
+              <ion-col size=6>
+                <ion-checkbox (ionChange)="search()" [(ngModel)]="searchWater" mode="md"></ion-checkbox>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col >
+            <ion-row align-items-center>
+              <ion-col size=6>
+                <img float-right src="assets/images/Wind.png"/>
+              </ion-col>
+              <ion-col size=6>
+                <ion-checkbox (ionChange)="search()" [(ngModel)]="searchWind" mode="md"></ion-checkbox>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+      
+          <ion-col >
+            <ion-row align-items-center>
+              <ion-col size=6>
+                <img float-right src="assets/images/Light.png"/>
+              </ion-col>
+              <ion-col size=6>
+                <ion-checkbox (ionChange)="search()" [(ngModel)]="searchLight" mode="md"></ion-checkbox>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col >
+            <ion-row align-items-center>
+              <ion-col size=6>
+                <img float-right src="assets/images/Dark.png"/>
+              </ion-col>
+              <ion-col size=6>
+                <ion-checkbox (ionChange)="search()" [(ngModel)]="searchDark" mode="md"></ion-checkbox>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+       </ion-row>
+      </div>
+
+      <div id="hero-class">
+        <ion-row>
+          <ion-col >
+            <ion-row align-items-center>
+              <ion-col align-self-end size=8>
+                <img float-right src="assets/images/Tank.png"/>
+              </ion-col>
+              <ion-col size=4>
+                <ion-checkbox (ionChange)="search()" [(ngModel)]="searchTank" mode="md"></ion-checkbox>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col >
+            <ion-row align-items-center>
+              <ion-col size=8>
+                <img float-right src="assets/images/Fight.png"/>
+              </ion-col>
+              <ion-col size=4>
+                <ion-checkbox (ionChange)="search()" [(ngModel)]="searchFight" mode="md"></ion-checkbox>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col >
+            <ion-row align-items-center>
+              <ion-col size=8>
+                <img float-right src="assets/images/Assist.png"/>
+              </ion-col>
+              <ion-col size=4>
+                <ion-checkbox (ionChange)="search()" [(ngModel)]="searchAssist" mode="md"></ion-checkbox>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+     </div>
+    </ion-grid>
+  </div>
+
+
+  <ion-list>
+    <ion-item *ngFor="let item of items"  (click)="goDetail(item.name)">
+      <!-- <ion-icon [name]="item.icon" slot="start"></ion-icon> -->
+
+      <ion-grid>
+        <ion-row align-items-center >
+          <ion-col size=2>
+            <ion-thumbnail>
+              <ion-img [src]="item.img"></ion-img>
+            </ion-thumbnail>
+          </ion-col>
+          <ion-col size=4>
+             <b>{{item.name}}</b>
+          </ion-col>
+          <ion-col size=2>
+           <ion-img class="smallIcon" [src]="item.tierImg"></ion-img>
+          </ion-col>
+          <ion-col size=2>
+           <ion-img class="smallIcon" [src]="item.elementImg"></ion-img>
+          </ion-col>
+          <!-- <ion-col size=2>
+           <ion-img class="smallIcon" [src]="item.typeImg"></ion-img>
+          </ion-col> -->
+          <ion-col size=2>
+           <ion-img class="smallIcon2" [src]="item.classImg"></ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
+     
+     <!--  <div slot="end">
+        <ion-button [routerLink]="['/hero-detail']">View</ion-button>
+      </div> -->
+
+    </ion-item>
+  </ion-list>
+  <!--
+    <div *ngIf="selectedItem" padding>
+      You navigated here from <b>{{selectedItem.title }}</b>
+    </div>
+  -->
+</ion-content>

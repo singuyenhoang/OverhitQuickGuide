@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="welcome-card">
+      <ion-img src="/assets/shapes.svg"></ion-img>
+      <ion-card-header>
+        <!-- <ion-card-subtitle>Get Started</ion-card-subtitle> -->
+        <ion-card-title>Welcome to Overhit Quick Guide</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>This is simple guide for you to quick lookup the Overhit heroes information....</p>
+        <br>
+        <!-- <ion-button  [routerLink]="['/list']"  ><img src="assets/images/LetStart.png" alt=" " /></ion-button> -->
+
+        <ion-list>
+          <ion-radio-group>
+            <ion-list-header>
+              Select the language to display:
+            </ion-list-header>
+
+            <ion-item>
+              <ion-label>English</ion-label>
+              <ion-radio checked (ionSelect)='setLanguage("EN")'></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Vietnamese</ion-label>
+              <ion-radio (ionSelect)='setLanguage("VI")'></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+
+        <!-- <ion-button shape="round" color="primary" fill="outline" (click)="showBannerAd()">Show Banner Ad</ion-button> -->
+        
+
+<br>
+<br>
+        <ion-img class="button_start" style="border-radius: 50px;" [routerLink]="['/list']" src="assets/images/LetStart.png" alt=" " ></ion-img>
+        <br>
+      </ion-card-content>
+    </ion-card>
+    
+</ion-content>
